@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import cv.api.openapis_dev.application.geografica.dto.ComboboxDto;
 import cv.api.openapis_dev.application.geografica.dto.LocalidadeDto;
+import cv.api.openapis_dev.application.geografica.enums.TypeGeografia;
 import cv.api.openapis_dev.domain.geografia.GeografiaBus;
 import lombok.*;
 
@@ -21,8 +22,8 @@ public class GeografiaServiceImpl implements GeografiaService {
      }
 
      @Override
-     public List<ComboboxDto> getLocalidadeByPai(String tipo, String idPai){
-         return geografiaBus.getLocalidadeByPai(tipo, idPai);
+     public List<ComboboxDto> getLocalidadeByPai(TypeGeografia tipo, String idPai){
+         return geografiaBus.getLocalidadeByPai(tipo.getDescription(), idPai);
      }
 
      public LocalidadeDto getDetalheLocalidade(String idLocalidade){

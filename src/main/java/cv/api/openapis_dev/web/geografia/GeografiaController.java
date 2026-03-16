@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cv.api.openapis_dev.application.geografica.dto.ComboboxDto;
 import cv.api.openapis_dev.application.geografica.dto.LocalidadeDto;
+import cv.api.openapis_dev.application.geografica.enums.TypeGeografia;
 import cv.api.openapis_dev.application.geografica.service.GeografiaService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -28,7 +31,13 @@ public class GeografiaController {
 
     @GetMapping("/localidade")
     @Operation(summary = "List of locations by type and parent ID")
-    public List<ComboboxDto> getNacionalidade(@RequestParam("tipo") String tipo, @RequestParam("idPai") String idPai){
+    public List<ComboboxDto> getNacionalidade( @RequestParam("tipo") 
+        @Parameter(
+            description = "Tipo da localidade",
+            schema = @Schema(implementation = TypeGeografia.class),
+            example = "ILHA"
+        )
+        TypeGeografia tipo, @RequestParam("idPai") String idPai){
         return geografiaService.getLocalidadeByPai(tipo, idPai);
     }
 
