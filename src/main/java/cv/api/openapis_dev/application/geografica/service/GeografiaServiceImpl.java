@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import cv.api.openapis_dev.application.geografica.dto.ComboboxDto;
+import cv.api.openapis_dev.application.geografica.dto.LocalidadeDto;
 import cv.api.openapis_dev.domain.geografia.GeografiaBus;
 import lombok.*;
 
@@ -22,5 +23,9 @@ public class GeografiaServiceImpl implements GeografiaService {
      @Override
      public List<ComboboxDto> getLocalidadeByPai(String tipo, String idPai){
          return geografiaBus.getLocalidadeByPai(tipo, idPai);
+     }
+
+     public LocalidadeDto getDetalheLocalidade(String idLocalidade){
+        return geografiaBus.getDetalheLocalidade(idLocalidade);
      }
 }

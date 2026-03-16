@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import cv.api.openapis_dev.application.geografica.dto.ComboboxDto;
+import cv.api.openapis_dev.application.geografica.dto.LocalidadeDto;
 import cv.api.openapis_dev.application.geografica.enums.TypeGeografia;
 import cv.api.openapis_dev.infrastruture.entity.VGeograficaEntity;
 import cv.api.openapis_dev.infrastruture.repository.JpaGegraficaRepository;
@@ -31,5 +32,45 @@ public class GeografiaBusImpl implements GeografiaBus{
                                      .stream()
                                      .map(e -> new ComboboxDto(e.getLocalidade(), e.getIdLocalidade()))
                                      .collect(Collectors.toList());
+    }
+
+    @Override
+    public LocalidadeDto getDetalheLocalidade(String idLocalidade) {
+        var entity =  jpaGegraficaRepository.getByIdLocalidade(idLocalidade);
+        if(entity != null){
+            return new LocalidadeDto(
+                entity.getIdLocalidade(),
+                entity.getLocalidade(),
+                entity.getIdIlha(),
+                entity.getIlha(),
+                entity.getIdConcelho(),
+                entity.getConcelho(),
+                entity.getIdFreguesia(),
+                entity.getFreguesia(),
+                entity.getIdPais(),
+                entity.getPais(),
+                entity.getIdZona(),
+                entity.getZona(),
+                entity.getNacionalidade()
+            ); 
+        }else{
+            return new LocalidadeDto(
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ); 
+        }
+          
+ 
     }
 }

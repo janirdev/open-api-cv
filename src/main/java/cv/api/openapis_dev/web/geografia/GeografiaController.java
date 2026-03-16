@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import cv.api.openapis_dev.application.geografica.dto.ComboboxDto;
+import cv.api.openapis_dev.application.geografica.dto.LocalidadeDto;
 import cv.api.openapis_dev.application.geografica.service.GeografiaService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -25,9 +26,15 @@ public class GeografiaController {
         return geografiaService.getNacionalidade();
     }
 
-    @GetMapping("/localizacao")
+    @GetMapping("/localidade")
     @Operation(summary = "Lista localidades por tipo e idPai")
     public List<ComboboxDto> getNacionalidade(@RequestParam("tipo") String tipo, @RequestParam("idPai") String idPai){
         return geografiaService.getLocalidadeByPai(tipo, idPai);
+    }
+
+    @GetMapping("/delalhe/{idLocalidade}")
+    @Operation(summary = "Lista localidades por tipo e idPai")
+    public LocalidadeDto getNacionalidade(@RequestParam("idLocalidade") String idLocalidade){
+        return geografiaService.getDetalheLocalidade(idLocalidade);
     }
 }

@@ -1,6 +1,7 @@
 package cv.api.openapis_dev.infrastruture.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -25,5 +26,10 @@ public interface JpaGegraficaRepository extends JpaRepository<VGeograficaEntity,
         """)
         List<VGeograficaEntity> getLocalidades(@Param("tipo") String tipo, @Param("idPai") String idPai);
 
+
+        @Query("""
+                SELECT v FROM VGeograficaEntity v WHERE  idLocalidade = :idLocalidade
+        """)
+        VGeograficaEntity getByIdLocalidade(@Param("idLocalidade") String idLocalidade);
     
 }
