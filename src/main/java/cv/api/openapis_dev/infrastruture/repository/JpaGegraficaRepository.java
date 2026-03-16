@@ -19,8 +19,8 @@ public interface JpaGegraficaRepository extends JpaRepository<VGeograficaEntity,
                ( :tipo = 'PAIS' AND v.idPais IS NULL ) OR
                ( :tipo = 'ILHA' AND v.idPais = :idPai AND v.idIlha IS NULL ) OR
                ( :tipo = 'CONCELHO' AND v.idIlha = :idPai AND v.idConcelho IS NULL ) OR
-               ( :tipo = 'ZONA' AND v.idConcelho = :idPai AND v.idZona IS NULL ) OR
-               ( :tipo = 'FREGUESIA' AND v.idIlha = :idPai AND v.idFreguesia IS NULL )
+               ( :tipo = 'ZONA' AND v.idFreguesia = :idPai AND v.idZona IS NULL ) OR
+               ( :tipo = 'FREGUESIA' AND v.idConcelho = :idPai AND v.idFreguesia IS NULL )
               )
             ORDER BY v.localidade
         """)
