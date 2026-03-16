@@ -23,6 +23,3 @@ CREATE OR REPLACE VIEW public.view_geografia_global
      LEFT JOIN global_geografia d ON a.freguesia::text = d.id::text
      LEFT JOIN global_geografia e ON a.pais::text = e.id::text
      LEFT JOIN global_geografia f ON a.zona::text = f.id::text;
-
-ALTER TABLE public.view_geografia_global
-    OWNER TO postgres;
