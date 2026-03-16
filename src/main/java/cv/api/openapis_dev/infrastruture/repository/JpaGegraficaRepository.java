@@ -14,7 +14,7 @@ public interface JpaGegraficaRepository extends JpaRepository<VGeograficaEntity,
 
       @Query("""
         SELECT v FROM VGeograficaEntity v
-        WHERE (:idPai IS NULL OR 
+        WHERE ((:idPai IS NULL and v.idIlha is null and v.idConcelho IS NULL and v.idZona IS NULL and v.idFreguesia IS NULL) OR 
                ( :tipo = 'PAIS' AND v.idPais IS NULL ) OR
                ( :tipo = 'ILHA' AND v.idPais = :idPai AND v.idIlha IS NULL ) OR
                ( :tipo = 'CONCELHO' AND v.idIlha = :idPai AND v.idConcelho IS NULL ) OR
