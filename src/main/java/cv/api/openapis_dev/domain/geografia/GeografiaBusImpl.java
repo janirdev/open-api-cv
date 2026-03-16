@@ -19,7 +19,7 @@ public class GeografiaBusImpl implements GeografiaBus{
 
     @Override
     public List<ComboboxDto> getNacionalidade() {
-        return jpaGegraficaRepository.getLocalidades(TypeGeografia.PAIS.getDescricao(), null)
+        return jpaGegraficaRepository.getLocalidades(TypeGeografia.PAIS.getDescription(), null)
                                      .stream()
                                      .map(e -> new ComboboxDto(e.getLocalidade(), e.getIdLocalidade()))
                                      .collect(Collectors.toList());

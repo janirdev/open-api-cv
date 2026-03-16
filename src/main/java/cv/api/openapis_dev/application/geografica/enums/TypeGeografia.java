@@ -7,13 +7,13 @@ public enum TypeGeografia {
     FREGUESIA("FREGUESIA"),
     ZONA("ZONA");
     
-    private final String descricao;
+    private final String description;
 
-    TypeGeografia(String descricao) {
-        this.descricao = descricao;
+    TypeGeografia(String description) {
+        this.description = description;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDescription() {
+        return description;
     }
 }
