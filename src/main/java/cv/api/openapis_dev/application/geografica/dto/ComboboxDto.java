@@ -5,6 +5,6 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 public class ComboboxDto {
-    private String descricao;
+    private String descriprion;
     private String value;
 }
